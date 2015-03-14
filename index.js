@@ -2019,6 +2019,6 @@ window.$ === undefined && (window.$ = Zepto)
     browser.desktop = true;
   }
 
-  this.os = os;
-  this.browser = browser;
+  $.os = os;
+  $.browser = browser;
 })(Zepto)
