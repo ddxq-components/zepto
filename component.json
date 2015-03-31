@@ -5,5 +5,6 @@
   "exports" : "Zepto",
   "description": "A custom-built zepto - zepto event fx data selector",
   "keywords": ["zepto", "selector", "$", "jquery"],
-  "scripts": ["index.js"]
+  "main":"zepto.js",
+  "scripts": ["zepto.js"]
 }
