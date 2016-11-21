@@ -1178,10 +1178,28 @@ window.$ === undefined && (window.$ = Zepto)
       return xhr
     }
 
-    if (settings.xhrFields) for (name in settings.xhrFields) xhr[name] = settings.xhrFields[name]
+    if (settings.xhrFields) {
+      for (name in settings.xhrFields) {
+        if (name != 'withCredentials') {
+          xhr[name] = settings.xhrFields[name]
+        }
+      }
+    }
 
     var async = 'async' in settings ? settings.async : true
     xhr.open(settings.type, settings.url, async, settings.username, settings.password)
+
+    try {
+      if (settings.xhrFields) {
+        for (name in settings.xhrFields) {
+          if (name == 'withCredentials') {
+            xhr[name] = settings.xhrFields[name]
+          }
+        }
+      }
+    } catch (ex) {
+      // noop
+    }
 
     for (name in headers) nativeSetHeader.apply(xhr, headers[name])
 
